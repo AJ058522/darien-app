@@ -18,8 +18,8 @@ export class AppComponent {
     this.initializeApp();
   }
 
-  initializeApp() {
-    let session = this.authService.loadSession();
+  async initializeApp() {
+    let session = await this.authService.loadSession();
     if (session) {
       this.authService.authenticate();
     }
