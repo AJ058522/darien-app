@@ -28,7 +28,7 @@ export class AppComponent {
       if (!state) {
         this.router.navigate(['auth']);
       } else {
-        this.router.navigate(['home']);
+        this.router.navigate(['products']);
       }
     });
   }

@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar color="grey">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <h1 class="ion-text-center ion-padding-top">{{title}}</h1>
+
+  <app-product-card [product]="product" *ngIf="product"></app-product-card>
+
+  <ion-button expand="block" class="ion-margin-top ion-text-capitalize" type="button" (click)="addToCart()">
+    Agregar al Carrito
+  </ion-button>
+
+</ion-content>

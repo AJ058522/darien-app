@@ -1,0 +1,17 @@
+<ion-content class="ion-padding">
+
+  <h1 class="ion-text-center ion-padding-top">{{title}}</h1>
+
+  <div *ngIf="productsList">
+
+    <ion-item size="12">
+      <ion-input type="text" placeholder="Buscar producto" [(ngModel)]="productName"
+        (ionChange)="findProductByName()"></ion-input>
+    </ion-item>
+
+    <app-product-card *ngFor="let product of productsList; let i=index" routerLink="details/{{product.id}}"
+      [product]="product">
+    </app-product-card>
+  </div>
+
+</ion-content>

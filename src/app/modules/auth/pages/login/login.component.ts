@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
       this.errorMessage = 'Usuario o contraseña incorrecta.';
     }
     if (response) {
-      this.router.navigate(['home']);
+      this.router.navigate(['products']);
       this.loginForm.reset();
     }
   }
