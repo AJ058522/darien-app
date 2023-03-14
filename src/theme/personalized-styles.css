@@ -1,0 +1,14 @@
+
+*:focus
+{
+  outline: none;
+}
+    
+.inv-feedback
+{
+  width: 100%;
+  margin: 0.25rem 0rem;
+  font-size: 90%;
+  font-weight: bold;
+  color: #FF586B;
+}

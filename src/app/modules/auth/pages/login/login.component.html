@@ -1,0 +1,49 @@
+<ion-content class="ion-padding">
+
+  <h1 class="ion-text-center ion-padding-top">Login</h1>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+    <ion-item size="12">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+      <div
+        *ngIf="loginForm.get('email')?.hasError && (loginForm.get('email')?.touched || loginForm.get('email')?.dirty)">
+        <div class="inv-feedback" *ngIf="loginForm.get('email')?.hasError('required')">
+          El campo es obligatorio.
+        </div>
+        <div class="inv-feedback" *ngIf="loginForm.get('email')?.hasError('email')">
+          Debe ser un email válido.
+        </div>
+      </div>
+    </ion-item>
+
+    <ion-item size="12">
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input [type]="passwordType" formControlName="password"></ion-input>
+      <div *ngIf="loginForm.get('password')?.hasError &&
+      (loginForm.get('password')?.touched ||
+      loginForm.get('password')?.dirty)">
+        <div class="inv-feedback" *ngIf="loginForm.get('password')?.hasError('required')">
+          El campo es obligatorio.
+        </div>
+      </div>
+    </ion-item>
+
+    <ion-item size="12" *ngIf="errorMessage">
+      <ion-col size="12" class="ion-text-center">
+        <div class="inv-feedback">{{errorMessage}}</div>
+      </ion-col>
+    </ion-item>
+
+    <ion-item size="12">
+      <ion-label>Mostrar contraseña</ion-label>
+      <ion-toggle formControlName="showPassword" (ionChange)="showPasswordToogle()"></ion-toggle>
+    </ion-item>
+
+    <ion-button expand="block" class="ion-margin-top ion-text-capitalize" type="submit" [disabled]="!loginForm.valid">
+      Iniciar Sesión
+    </ion-button>
+
+  </form>
+</ion-content>
