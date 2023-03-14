@@ -1,0 +1,7 @@
+{
+  "name": "darien",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
