@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar color="grey">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <h1 class="ion-text-center ion-padding-top">Total {{total | currency}}</h1>
+
+  <h3>Introduzca los datos de la tarjeta de crédito</h3>
+
+  <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+
+    <ion-item size="12">
+      <ion-label position="floating">Número de Tarjeta</ion-label>
+      <ion-input type="text" formControlName="card_number"></ion-input>
+      <div
+        *ngIf="paymentForm.get('card_number')?.hasError && (paymentForm.get('card_number')?.touched || paymentForm.get('card_number')?.dirty)">
+        <div class="inv-feedback" *ngIf="paymentForm.get('card_number')?.hasError('required')">
+          El campo es obligatorio.
+        </div>
+      </div>
+    </ion-item>
+
+    <ion-item size="12">
+      <ion-label position="floating">Nombre en la Tarjeta</ion-label>
+      <ion-input type="text" formControlName="card_name"></ion-input>
+      <div
+        *ngIf="paymentForm.get('card_name')?.hasError && (paymentForm.get('card_name')?.touched || paymentForm.get('card_name')?.dirty)">
+        <div class="inv-feedback" *ngIf="paymentForm.get('card_name')?.hasError('required')">
+          El campo es obligatorio.
+        </div>
+      </div>
+    </ion-item>
+
+    <ion-item size="12" class="ion-margin-top">
+      <ion-label>Mes de vencimiento</ion-label>
+      <div
+        *ngIf="paymentForm.get('expiring_date')?.hasError && (paymentForm.get('expiring_date')?.touched || paymentForm.get('expiring_date')?.dirty)">
+        <div class="inv-feedback" *ngIf="paymentForm.get('expiring_date')?.hasError('required')">
+          El campo es obligatorio.
+        </div>
+      </div>
+    </ion-item>
+    <ion-item size="12">
+      <ion-datetime presentation="month-year" formControlName="expiring_date"></ion-datetime>
+    </ion-item>
+
+    <ion-item size="12" *ngIf="errorMessage">
+      <ion-col size="12" class="ion-text-center">
+        <div class="inv-feedback">{{errorMessage}}</div>
+      </ion-col>
+    </ion-item>
+
+
+    <ion-button expand="block" class="ion-margin-top ion-text-capitalize" type="submit" [disabled]="!paymentForm.valid">
+      Completar Pedido
+    </ion-button>
+  </form>
+</ion-content>

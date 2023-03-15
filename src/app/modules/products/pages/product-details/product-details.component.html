@@ -12,7 +12,9 @@
 
   <app-product-card [product]="product" *ngIf="product"></app-product-card>
 
-  <ion-button expand="block" class="ion-margin-top ion-text-capitalize" type="button" (click)="addToCart()">
+  <div class="inv-feedback" *ngIf="errorMessage">{{errorMessage}}</div>
+
+  <ion-button expand="block" class="ion-margin-top ion-text-capitalize" type="button" (click)="presentAlert()">
     Agregar al Carrito
   </ion-button>
 

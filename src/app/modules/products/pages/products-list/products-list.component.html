@@ -1,3 +1,19 @@
+<ion-header>
+  <ion-toolbar color="grey">
+    <ion-grid>
+      <ion-row class="ion-justify-content-end">
+        <ion-col size="3">
+          <ion-tab-button tab="schedules" [routerLink]="['/shopping-cart']">
+            <ion-icon name="cart"></ion-icon>
+            <ion-label>Cart</ion-label>
+            <ion-badge>{{cartTotaltems}}</ion-badge>
+          </ion-tab-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content class="ion-padding">
 
   <h1 class="ion-text-center ion-padding-top">{{title}}</h1>

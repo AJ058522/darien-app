@@ -16,6 +16,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'shopping-cart',
+    loadChildren: () =>
+      import('./modules/shopping-cart/shopping-cart.module').then(
+        (m) => m.ShoppingCartModule
+      ),
+  },
+  {
     path: '',
     redirectTo: 'auth',
     pathMatch: 'full',

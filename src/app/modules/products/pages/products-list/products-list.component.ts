@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ShoppingCartService } from 'src/app/modules/shopping-cart/services/shopping-cart.service';
 import { Product } from '../../models/product';
 import { ProductsService } from '../../services/products.service';
 
@@ -11,8 +12,12 @@ export class ProductsListComponent implements OnInit {
   title: string = 'Productos';
   productsList: Product[] = [];
   productName: string = '';
+  cartTotaltems: number = 0;
 
-  constructor(private productsService: ProductsService) {}
+  constructor(
+    private productsService: ProductsService,
+    private shoppingCartService: ShoppingCartService
+  ) {}
 
   ngOnInit() {
     this.getProducts();
@@ -30,5 +35,14 @@ export class ProductsListComponent implements OnInit {
     } else {
       this.getProducts();
     }
+  }
+
+  async getCartTotaltems() {
+    const cart = await this.shoppingCartService.loadCartItems();
+    this.cartTotaltems = cart ? cart.length : 0;
+  }
+
+  ionViewDidEnter() {
+    this.getCartTotaltems();
   }
 }
