@@ -7,6 +7,7 @@ import { ProductsListComponent } from './pages/products-list/products-list.compo
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { IonicModule } from '@ionic/angular';
 import { ProductCardComponent } from './components/product-card/product-card.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ProductCardComponent } from './components/product-card/product-card.com
     IonicModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedModule,
   ],
 })
 export class ProductsModule {}
