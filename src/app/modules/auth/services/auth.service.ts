@@ -28,12 +28,14 @@ export class AuthService {
       return null;
     }
 
-    if (isValidUser.password) {
-      isValidUser.password = undefined;
-    }
-    this.saveSession(isValidUser);
+    const sessionData = {
+      id: isValidUser.id,
+      name: isValidUser.name,
+      email: isValidUser.email,
+    };
+    this.saveSession(sessionData);
     this.authenticate();
-    return isValidUser;
+    return sessionData;
   }
 
   isAuthenticated() {
