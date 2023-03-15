@@ -4,16 +4,21 @@ import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
 
 import { AuthService } from './modules/auth/services/auth.service';
+import { NetworkService } from './modules/shared/services/network.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
+  isConected: boolean = true;
+  footerColor: string = 'success';
+
   constructor(
     private platform: Platform,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private networkService: NetworkService
   ) {
     this.initializeApp();
   }
@@ -30,6 +35,11 @@ export class AppComponent {
       } else {
         this.router.navigate(['products']);
       }
+    });
+
+    this.networkService.networkStatus.subscribe((state) => {
+      this.isConected = state;
+      this.footerColor = this.isConected ? 'success' : 'danger';
     });
   }
 }
