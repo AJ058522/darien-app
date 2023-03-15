@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/modules/auth/services/auth.service';
 import { ShoppingCartService } from 'src/app/modules/shopping-cart/services/shopping-cart.service';
 import { Product } from '../../models/product';
 import { ProductsService } from '../../services/products.service';
@@ -16,7 +17,8 @@ export class ProductsListComponent implements OnInit {
 
   constructor(
     private productsService: ProductsService,
-    private shoppingCartService: ShoppingCartService
+    private shoppingCartService: ShoppingCartService,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
@@ -44,5 +46,9 @@ export class ProductsListComponent implements OnInit {
 
   ionViewDidEnter() {
     this.getCartTotaltems();
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

@@ -62,4 +62,9 @@ export class AuthService {
     this.storage?.remove('sessionData');
     return true;
   }
+
+  logout() {
+    this.removeSession();
+    this.unauthenticate();
+  }
 }

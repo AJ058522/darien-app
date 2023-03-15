@@ -2,12 +2,19 @@
   <ion-toolbar color="grey">
     <ion-grid>
       <ion-row class="ion-justify-content-end">
-        <ion-col size="3">
+        <ion-col>
           <ion-tab-button tab="schedules" [routerLink]="['/shopping-cart']">
             <ion-icon name="cart"></ion-icon>
             <ion-label>Cart</ion-label>
             <ion-badge>{{cartTotaltems}}</ion-badge>
           </ion-tab-button>
+        </ion-col>
+        <ion-col>
+          <ion-tab-button tab="schedules" (click)="logout()">
+            <ion-icon name="log-out"></ion-icon>
+            <ion-label>Logout</ion-label>
+          </ion-tab-button>
+
         </ion-col>
       </ion-row>
     </ion-grid>
